@@ -1,0 +1,42 @@
+@{
+    ViewData["Title"] = "Edit";
+}
+
+@model CRUDMVC.DTOs.UpdateUserDTO
+
+
+<div class="card p-4" style="width:50%; margin:auto;">
+    <h1 class="text-center">Edit User</h1>
+    <form method="post">
+        <div class="mt-3" hidden>
+            <label class="form-label">Id</label>
+            <input class="form-control" type="text" asp-for="Id" readonly>
+        </div>
+        <div class="mt-3">
+            <label class="form-label">Name</label>
+            <input class="form-control" placeholder="Name" type="text" asp-for="Name">
+            <span class="text-danger" asp-validation-for="Name"></span>
+        </div>
+        <div class="mt-3">
+            <label class="form-label">Email</label>
+            <input class="form-control" placeholder="Email" type="email" asp-for="Email">
+            <span class="text-danger" asp-validation-for="Email"></span>
+        </div>
+        <div class="mt-3">
+            <label class="form-label">Phone</label>
+            <input class="form-control" placeholder="Phone" type="text" asp-for="Phone">
+        </div>
+        <div class="mt-3">
+            <label class="form-label">City</label>
+            <input class="form-control" placeholder="City" type="text" asp-for="City">
+        </div>
+        <div class="mt-3 text-center">
+            <button class="btn btn-success ms-2" type="submit">Update</button>
+            <a class="btn btn-secondary ms-2" asp-controller="User" asp-action="List">Back To List</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

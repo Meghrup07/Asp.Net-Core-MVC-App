@@ -1,0 +1,64 @@
+@{
+    ViewData["Title"] = "List";
+}
+
+@model List<CRUDMVC.Models.AppUser>
+
+<div class="card p-4">
+    <div class="d-flex align-item-center justify-content-between">
+        <div class="title">
+            <h3>User List</h3>
+        </div>
+        <div class="btn-wrap">
+            <a type="button" class="btn btn-primary" asp-action="Add" asp-controller="User">Add User</a>
+        </div>
+    </div>
+    <div class="responsive-table">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">City</th>
+                    <th scope="col">Companies</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <th>@user.Id</th>
+                        <td>@user.Name</td>
+                        <td>@user.Email</td>
+                        <td>@user.Phone</td>
+                        <td>@user.City</td>
+                        <td>
+                            @if (user.Companies != null && user.Companies.Any())
+                            {
+                                <ul>
+                                    @foreach (var company in user.Companies)
+                                    {
+                                        <li>@company.CompanyName</li>
+                                    }
+                                </ul>
+                            }
+                            else
+                            {
+                                <span>No Companies</span>
+                            }
+                        </td>
+                        <td>
+                            <a type="button" class="btn btn-primary" asp-action="Edit" asp-controller="User"
+                                asp-route-id="@user.Id">Edit</a>
+                            <a type="button" class="btn btn-info" asp-action="Details" asp-controller="User"
+                                asp-route-id="@user.Id">Details</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

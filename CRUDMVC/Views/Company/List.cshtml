@@ -1,0 +1,44 @@
+@{
+    ViewData["Title"] = "List";
+}
+
+@model List<CRUDMVC.Models.Company>
+
+<div class="card p-4">
+    <div class="d-flex align-item-center justify-content-between">
+        <div class="title">
+            <h3>Company List</h3>
+        </div>
+        <div class="btn-wrap">
+            <a type="button" class="btn btn-primary" asp-action="Add" asp-controller="Company">Add Company</a>
+        </div>
+    </div>
+    <div class="responsive-table">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Company Name</th>
+                    <th scope="col">Company Discription</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var company in Model)
+                {
+                    <tr>
+                        <th>@company.Id</th>
+                        <td>@company.CompanyName</td>
+                        <td>@company.CompanyDiscription</td>
+                        <td>
+                            <a type="button" class="btn btn-primary" asp-action="Edit" asp-controller="Company"
+                                asp-route-id="@company.Id">Edit</a>
+                            <a type="button" class="btn btn-info" asp-action="Details" asp-controller="Company"
+                                asp-route-id="@company.Id">Details</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
